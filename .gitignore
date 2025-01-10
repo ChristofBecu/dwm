@@ -1,3 +1,8 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/settings.json
+util.o
+drw.o
+dwm
+dwm.o
+config.h
