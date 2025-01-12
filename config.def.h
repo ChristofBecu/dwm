@@ -70,6 +70,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *browsercmd[]  = { "zen-browser", NULL };
 static const char *vscodecmd[]  = { "code", NULL };
 static const char *obsidiancmd[]  = { "obsidian", NULL };
+static const char *slockcmd[]  = { "slock", NULL };
 
 Autostarttag autostarttaglist[] = {
 	{.cmd = termcmd, .tags = 1 << 0 },
@@ -83,13 +84,14 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = obsidiancmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = vscodecmd } },
+	{ MODKEY,                       XK_l,      spawn,          {.v = slockcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ControlMask,           XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY|ControlMask,           XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_q,      view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
