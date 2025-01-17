@@ -35,8 +35,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Gimp",     NULL,       NULL,       0,            1,           1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0 },
 };
 
 /* layout(s) */
@@ -72,6 +72,7 @@ static const char *vscodecmd[]  = { "code", NULL };
 static const char *obsidiancmd[]  = { "obsidian", NULL };
 static const char *slockcmd[]  = { "slock", NULL };
 static const char *cmuscmd[]  = { "alacritty", "-e", "cmus", NULL };
+static const char *filemanagercmd[]  = { "thunar", NULL };
 
 Autostarttag autostarttaglist[] = {
 	{.cmd = termcmd, .tags = 1 << 0 },
@@ -86,7 +87,9 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = obsidiancmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = vscodecmd } },
-	{ MODKEY,                       XK_l,      spawn,          {.v = slockcmd } },
+	{ MODKEY|ControlMask|ShiftMask, XK_l,      spawn,          {.v = slockcmd } },
+	{ MODKEY,                       XK_a,      spawn,          {.v = cmuscmd } },
+	{ MODKEY,                       XK_f,      spawn,          {.v = filemanagercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -97,9 +100,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_v,      view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	// { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	// { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_agrave, view,           {.ui = ~0 } },
