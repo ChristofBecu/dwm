@@ -71,10 +71,12 @@ static const char *browsercmd[]  = { "zen-browser", NULL };
 static const char *vscodecmd[]  = { "code", NULL };
 static const char *obsidiancmd[]  = { "obsidian", NULL };
 static const char *slockcmd[]  = { "slock", NULL };
+static const char *cmuscmd[]  = { "alacritty", "-e", "cmus", NULL };
 
 Autostarttag autostarttaglist[] = {
 	{.cmd = termcmd, .tags = 1 << 0 },
 	{.cmd = browsercmd, .tags = 1 << 0 },
+	{.cmd = cmuscmd, .tags = 1 << 1 },	
 	{.cmd = NULL, .tags = 0 },
 };
 
