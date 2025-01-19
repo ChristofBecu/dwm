@@ -83,13 +83,14 @@ Autostarttag autostarttaglist[] = {
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_m,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = obsidiancmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = vscodecmd } },
 	{ MODKEY|ControlMask|ShiftMask, XK_l,      spawn,          {.v = slockcmd } },
 	{ MODKEY,                       XK_a,      spawn,          {.v = cmuscmd } },
 	{ MODKEY,                       XK_f,      spawn,          {.v = filemanagercmd } },
+	{ MODKEY|ShiftMask,             XK_r,      restart,        {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

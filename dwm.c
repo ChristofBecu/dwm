@@ -251,6 +251,7 @@ static void zoom(const Arg *arg);
 void drawTab(int nwins, int first, Monitor *m);
 void altTabStart(const Arg *arg);
 static void altTabEnd();
+static void restart(const Arg *arg);
 
 /* variables */
 static const char broken[] = "broken";
@@ -2445,6 +2446,13 @@ zoom(const Arg *arg)
 	if (c == nexttiled(selmon->clients) && !(c = nexttiled(c->next)))
 		return;
 	pop(c);
+}
+
+void
+restart(const Arg *arg)
+{
+	char path[PATH_MAX] = "/usr/local/bin/dwm";
+	execv(path, (char *const[]) {path, NULL});
 }
 
 int
