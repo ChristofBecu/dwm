@@ -5,6 +5,7 @@ include config.mk
 
 SRC = drw.c dwm.c util.c
 OBJ = ${SRC:.c=.o}
+CONFIGDIR = /home/bedawang/.config/dwm
 
 all: dwm
 
@@ -38,9 +39,15 @@ install: all
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
+	mkdir -p ${CONFIGDIR}
+	mkdir -p ${CONFIGDIR}/scripts
+	cp scripts/* ${CONFIGDIR}/scripts
+	chmod 755 ${CONFIGDIR}/scripts/*
+
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
+	rm -rf ${CONFIGDIR}
 
 .PHONY: all clean dist install uninstall
