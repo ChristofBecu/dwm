@@ -140,6 +140,11 @@ typedef struct {
 	int monitor;
 } Rule;
 
+typedef struct {
+	const char *cmd;
+	const char *args;
+} AutoStartScript;
+
 /* function declarations */
 static void applyrules(Client *c);
 static int applysizehints(Client *c, int *x, int *y, int *w, int *h, int interact);
@@ -193,6 +198,7 @@ static void resizeclient(Client *c, int x, int y, int w, int h);
 static void resizemouse(const Arg *arg);
 static void restack(Monitor *m);
 static void run(void);
+static void runAutostartScripts(void);
 static void scan(void);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
@@ -1390,6 +1396,22 @@ run(void)
 }
 
 void
+runAutostartScripts(void) {
+	// for each of autostartscripts in config.h, run them
+	for (int i = 0; i < LENGTH(autoStartScripts); i++) {
+		char command[512];
+		if (autoStartScripts[i].args != NULL) {
+			snprintf(command, sizeof(command), "%s %s", autoStartScripts[i].cmd, autoStartScripts[i].args);
+			system(command);
+		}
+		else {
+			snprintf(command, sizeof(command), "%s", autoStartScripts[i].cmd);
+		}
+		system(command);
+	}
+}
+
+void
 scan(void)
 {
 	unsigned int i, num;
@@ -2157,6 +2179,7 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
+	runAutostartScripts();
 	run();
 	cleanup();
 	XCloseDisplay(dpy);
