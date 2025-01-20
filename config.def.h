@@ -31,6 +31,11 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
+static const AutoStartScript autoStartScripts[] = {
+	/* cmd                                                          args */
+	{ "/home/bedawang/.config/dwm/scripts/fehbackground.sh",        NULL },
+};
+
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
