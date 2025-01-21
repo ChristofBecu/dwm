@@ -32,17 +32,10 @@ static const Rule rules[] = {
 	{ "zen-beta", NULL,       NULL,       0,            0,            0 }
 };
 
-static const AutoStartScript autoStartScripts[] = {
-	/* cmd                                                          args */
-	//{ "/home/bedawang/.config/dwm/scripts/fehbackground.sh",        NULL },
-	//{ "/home/bedawang/.config/dwm/scripts/picomanimation.sh",       NULL}
-	{{NULL, NULL}}
-};
-
 static const char *const autostart[] = {
 	"feh --bg-fill /home/bedawang/.config/backgrounds/Black-Elegant-HD-Backgrounds.jpg", NULL,
 	"picom", NULL,
-	"zen-browser", NULL,
+	"sxhkd", NULL,
 	NULL /* terminate */
 };
 
@@ -56,7 +49,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "[M]",      monocle},
 };
 
 /* key definitions */
@@ -78,7 +71,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY          ,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
