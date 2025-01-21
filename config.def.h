@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
-
 /* appearance */
+
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -29,11 +29,21 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "zen-beta", NULL,       NULL,       0,            0,            0 }
 };
 
 static const AutoStartScript autoStartScripts[] = {
 	/* cmd                                                          args */
-	{ "/home/bedawang/.config/dwm/scripts/fehbackground.sh",        NULL },
+	//{ "/home/bedawang/.config/dwm/scripts/fehbackground.sh",        NULL },
+	//{ "/home/bedawang/.config/dwm/scripts/picomanimation.sh",       NULL}
+	{{NULL, NULL}}
+};
+
+static const char *const autostart[] = {
+	"feh --bg-fill /home/bedawang/.config/backgrounds/Black-Elegant-HD-Backgrounds.jpg", NULL,
+	"picom", NULL,
+	"zen-browser", NULL,
+	NULL /* terminate */
 };
 
 /* layout(s) */
