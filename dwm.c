@@ -238,6 +238,7 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
+static void restart(const Arg *arg);
 
 /* variables */
 static const char broken[] = "broken";
@@ -2159,6 +2160,13 @@ zoom(const Arg *arg)
 	if (c == nexttiled(selmon->clients) && !(c = nexttiled(c->next)))
 		return;
 	pop(c);
+}
+
+void
+restart(const Arg *arg)
+{
+	char path[PATH_MAX] = "/usr/local/bin/dwm";
+	execv(path, (char *const[]) {path, NULL});
 }
 
 int
